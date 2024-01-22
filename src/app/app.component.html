@@ -1,2 +1,18 @@
-<app-header></app-header>
-<button mat-button>MAT BTN</button>
+<div class="header">
+    <button class="" #menuBtn (click)="drawer.toggle()">
+        <mat-icon mat-icon>open</mat-icon>
+    </button>
+    <app-header></app-header>
+</div>
+
+
+<mat-sidenav-container [hasBackdrop]="true">
+    <mat-sidenav #drawer mode="over" closed>
+        <app-sidenav></app-sidenav>
+        <div class="">TEST</div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+        <app-footer></app-footer>
+    </mat-sidenav-content>
+</mat-sidenav-container>

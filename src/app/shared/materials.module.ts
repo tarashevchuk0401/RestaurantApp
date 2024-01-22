@@ -8,7 +8,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import {MatExpansionModule} from '@angular/material/expansion';
-import {MatSidenavModule} from '@angular/material/sidenav';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 
 @NgModule({
@@ -21,7 +21,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatFormFieldModule,
     MatSelectModule,
     MatExpansionModule,
-    MatSidenavModule
+    MatSidenavModule,
   ],
   declarations: [],
   imports: [
