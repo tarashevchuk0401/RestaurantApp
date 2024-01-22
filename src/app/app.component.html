@@ -1,6 +1,6 @@
 <div class="header">
-    <button class="" #menuBtn (click)="drawer.toggle()">
-        <mat-icon mat-icon>open</mat-icon>
+    <button class="button1" #menuBtn (click)="drawer.toggle()">
+        <img src="assets/icons/menu_.png" alt="menu_icon">
     </button>
     <app-header></app-header>
 </div>
@@ -9,7 +9,6 @@
 <mat-sidenav-container [hasBackdrop]="true">
     <mat-sidenav #drawer mode="over" closed>
         <app-sidenav></app-sidenav>
-        <div class="">TEST</div>
     </mat-sidenav>
     <mat-sidenav-content>
         <router-outlet></router-outlet>

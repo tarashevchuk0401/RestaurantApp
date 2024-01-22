@@ -1,0 +1,44 @@
+@import '/src/assets/styling/variables.scss';
+
+.header {
+  background-color: $color_dark_blue;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+
+  .button1 {
+    display: none;
+
+    .menu_icon {
+      width: 30px;
+      padding: 5px;
+      color: red;
+    }
+  }
+}
+
+mat-sidenav-content {
+  min-height: 92vh;
+  background-color: $color_white;
+  position: relative;
+  
+  
+  app-footer {
+    position: absolute;
+    bottom: 0;
+  }
+}
+
+mat-sidenav{
+  background-color: $color_light_blue;
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 2px;
+
+    .button1 {
+      display: block;
+    }
+  }
+}

@@ -1,5 +1,32 @@
 @import '/src/assets/styling/variables.scss';
+:host {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 1;
+}
 
-*{
-    color: $color_blue;
+.left {
+  display: flex;
+
+  .main_logo {
+    width: 30px;
+  }
+
+  .main_logo_text {
+    font-size: 30px;
+    font-style: italic;
+  }
+}
+
+.right {
+  display: flex;
+}
+
+@media (max-width: 560px) {
+  .left {
+    .main_logo_text {
+      display: none;
+    }
+  }
 }
