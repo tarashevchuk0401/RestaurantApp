@@ -3,6 +3,11 @@
     <div class="main_logo_text">Restaurant name</div>
 </div>
 <div class="right">
-    <a class="button1" routerLink="/auth/log-in">Log in</a>
-    <a class="button1" routerLink="/auth/sign-up">Sign up</a>
+    <ng-container *ngIf="isAuthenticated">
+        <a class="button1" routerLink="/">Log out</a>
+    </ng-container>
+    <ng-container *ngIf="!isAuthenticated">
+        <a class="button1" routerLink="/auth/log-in">Log in</a>
+        <a class="button1" routerLink="/auth/sign-up">Sign up</a>
+    </ng-container>
 </div>
