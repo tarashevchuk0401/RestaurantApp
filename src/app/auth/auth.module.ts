@@ -8,6 +8,10 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { MaterialsModule } from '../shared/materials.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import * as authEffects from './store/effects'
+import * as authReducer from './store/reducers'
 
 
 
@@ -22,7 +26,10 @@ import { AuthService } from './services/auth.service';
     FormsModule,
     MaterialsModule,
     HttpClientModule,
-    RouterModule.forChild(authRoutes)
+    RouterModule.forChild(authRoutes),
+    
+    StoreModule.forFeature('auth', authReducer.authReducer),
+    EffectsModule.forFeature([authEffects]),
   ],
   providers :[
     AuthService
