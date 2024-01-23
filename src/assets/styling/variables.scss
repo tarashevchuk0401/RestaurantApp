@@ -2,21 +2,27 @@ $color_dark_blue:#176B87;
 $color_blue:#86B6F6;
 $color_light_blue:#B4D4FF;
 $color_white:#EEF5FF;
+$color_red: #c33333;
 
 .button1{
     background-color: $color_dark_blue;
     border: none;
-    padding: 5px;
+    padding: 8px;
     text-align: center;
     font-size: 18px;
     font-weight: 400;
     margin: 0 5px;
-    color: #B4D4FF;
+    color: $color_light_blue;
     transition: all ease .2s;
     cursor: pointer;
 
     &:hover{
-        color: $color_light_blue;
+        color: $color_blue;
+    }
+
+    &:disabled{
+        background-color: $color_blue;
+        pointer-events: none;
     }
 }
 

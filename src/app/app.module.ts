@@ -9,8 +9,6 @@ import { FooterComponent } from './core/components/footer/footer.component';
 import { MaterialsModule } from './shared/materials.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidenavComponent } from './core/components/sidenav/sidenav.component';
-import { LogInComponent } from './auth/log-in/log-in.component';
-import { SignUpComponent } from './auth/sign-up/sign-up.component';
 
 
 @NgModule({
@@ -19,8 +17,7 @@ import { SignUpComponent } from './auth/sign-up/sign-up.component';
     HeaderComponent,
     FooterComponent,
     SidenavComponent,
-    LogInComponent,
-    SignUpComponent,
+
   ],
   imports: [
     BrowserModule,
