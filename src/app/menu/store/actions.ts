@@ -7,5 +7,9 @@ export const menuActions = createActionGroup({
         'Add new category': props<{request: string}>(),
         'Category Added': props<{response: {category: string}}>(),
         'Category failed': props<{error: BackendError}>(),
+        
+        'Get categories': emptyProps(),
+        'Get categories success': props<{response: string[]}>(),
+        'Get categories failed': props<{error: BackendError}>(),
     }
 })

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { firebaseConfig } from 'src/environment/entironment';
 
 @Injectable({
@@ -12,5 +12,11 @@ export class DataBaseService {
 
   addCategory(category: string): Observable<{category: string}>{
     return this.http.put<{category: string}>(firebaseConfig.endpoints.categories + category + '.json', {category})
+  }
+
+  getAllCategories(): Observable<string[]>{
+    return this.http.get<string[]>(firebaseConfig.endpoints.categories + '.json').pipe(
+      map(item => Object.keys(item))
+    )
   }
 }

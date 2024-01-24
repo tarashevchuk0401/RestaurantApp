@@ -16,6 +16,7 @@ const menuFeature = createFeature({
   reducer: createReducer(
     initialState,
 
+    //Add new category
     on(menuActions.addNewCategory, (state) => ({
       ...state,
     })),
@@ -27,6 +28,20 @@ const menuFeature = createFeature({
       ...state,
       validationErrors: action.error,
       addedCategory: null,
+    })),
+
+    //Get all categories
+    on(menuActions.getCategories, (state) => ({
+      ...state,
+    })),
+    on(menuActions.getCategoriesSuccess, (state, action) => ({
+      ...state,
+      categories: action.response,
+    })),
+    on(menuActions.categoryFailed, (state, action) => ({
+      ...state,
+      validationErrors: action.error,
+      categories: null,
     }))
   ),
 });

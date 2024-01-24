@@ -26,5 +26,26 @@ export const addCategory = createEffect(
         )
     },
     {functional: true}
-
+)
+export const getCategories = createEffect(
+    (actions$ = inject(Actions), dataBaseService = inject(DataBaseService)) => {
+        return actions$.pipe(
+            ofType(menuActions.getCategories),
+            switchMap(() => {
+                return dataBaseService.getAllCategories().pipe(
+                    map((response) => {
+                        return menuActions.getCategoriesSuccess({response: Array.from(response)})
+                    }),
+                    catchError((errorResponse: HttpErrorResponse) => {
+                        return of(
+                          menuActions.getCategoriesFailed({
+                            error: errorResponse.error.error.message,
+                          })
+                        );
+                      })
+                )
+            })
+        )
+    },
+    {functional: true}
 )
