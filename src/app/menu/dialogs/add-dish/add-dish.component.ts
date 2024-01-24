@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MatDialogRef} from '@angular/material/dialog';
 import {MatInput} from '@angular/material/input';
 import {DataBaseService} from '../../services/data-base.service';
@@ -30,11 +30,11 @@ export class AddDishComponent implements OnInit {
   
   initializeForm():void{
     this.formDish = this.fb.group({
-      title: [''],
-      description: [''],
-      price: [''],
-      ingredients: [''],
-      category: [''],
+      title: ['', [Validators.required, Validators.minLength(3)]],
+      description: ['', [Validators.required, Validators.minLength(3)]],
+      price: ['', [Validators.required, Validators.pattern('^[0-9]+(\.[0-9]{1,2})?$')]],
+      ingredients: ['',],
+      category: ['', [Validators.required]],
     });
   }
 
