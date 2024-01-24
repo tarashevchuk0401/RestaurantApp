@@ -21,7 +21,7 @@ $color_red: #c33333;
     }
 
     &:disabled{
-        background-color: $color_blue;
+        background-color: $color_light_blue;
         pointer-events: none;
     }
 }

@@ -1,1 +1,78 @@
 @import '/src/assets/styling/variables.scss';
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .admin_pannel{
+        display: flex;
+        justify-content: space-evenly;
+        margin: 15px;
+    }
+    
+    .menu{
+        display: flex;
+        
+
+        .card{
+            border-radius: 20px;
+            width: 320px;
+            margin: 30px;
+            overflow: hidden;
+            // background-color: $color_light_blue;
+
+            .card_img{
+                overflow: hidden;
+                img{
+                    width: 320px;
+                    height: 200px;
+                    object-fit: cover;
+                    border-radius: 20px;
+                }
+            }
+
+            .card_details{
+                margin-top: 20px;
+                padding: 20px;
+
+                .card_details_info{
+                    display: flex;
+                    justify-content: space-between;
+                    font-weight: 600;
+                    font-size: 22px;
+
+                    .price{
+                        color: $color_red;
+                    }
+                }
+
+                .card_details_description{
+                    p{
+                        text-align: justify;
+                        margin-top: 15px;
+                    }
+            
+                }
+
+                .card_details_ingredients{
+                    margin-top: 20px;
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    justify-content: flex-start;
+
+                    .ingredients{
+                        background-color: $color_blue;
+                        margin-right: 20px;
+                        margin-top: 5px;
+                        padding: 5px;
+                        font-size: 14px;
+                    }
+                }
+            }
+
+
+        }
+    }
+}
