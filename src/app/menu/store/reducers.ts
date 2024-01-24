@@ -57,6 +57,20 @@ const menuFeature = createFeature({
       validationErrors: action.error,
       addedDish: null,
     })),
+
+      //Get all menu
+      on(menuActions.getMenu, (state) => ({
+        ...state,
+      })),
+      on(menuActions.getMenuSuccess, (state, action) => ({
+        ...state,
+        menu: action.response,
+      })),
+      on(menuActions.getCategoriesFailed, (state, action) => ({
+        ...state,
+        validationErrors: action.error,
+        menu: null,
+      })),
   ),
 });
 

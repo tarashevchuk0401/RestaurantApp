@@ -15,6 +15,10 @@ export const menuActions = createActionGroup({
 
         'Add dish' : props<{dish: Dish}>(),
         'Add dish success' : props<{dish: Dish}>(),
-        'Add dish failed' : props<{error: BackendError}>()
+        'Add dish failed' : props<{error: BackendError}>(),
+
+        'Get menu': emptyProps(),
+        'Get menu success': props<{response: Dish[]}>(),
+        'Get menu failed': props<{error: BackendError}>(),
     }
 })

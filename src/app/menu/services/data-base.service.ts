@@ -24,4 +24,11 @@ export class DataBaseService {
   addDish(newDish: Dish): Observable<Dish>{
     return this.http.put<Dish>(firebaseConfig.endpoints.menu + newDish.id +'.json', newDish)
   }
+
+  getMenu(): Observable<Array<Dish>>{
+    return this.http.get<Array<Dish>>(firebaseConfig.endpoints.menu + '.json')
+    .pipe(
+      map(result => Object.values(result))
+    )
+  }
 }
