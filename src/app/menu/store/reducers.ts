@@ -38,11 +38,25 @@ const menuFeature = createFeature({
       ...state,
       categories: action.response,
     })),
-    on(menuActions.categoryFailed, (state, action) => ({
+    on(menuActions.getCategoriesFailed, (state, action) => ({
       ...state,
       validationErrors: action.error,
       categories: null,
-    }))
+    })),
+    
+    //Add new dish
+    on(menuActions.addDish, (state) => ({
+      ...state,
+    })),
+    on(menuActions.addDishSuccess, (state, action) => ({
+      ...state,
+      addedDish: action.dish,
+    })),
+    on(menuActions.addDishFailed, (state, action) => ({
+      ...state,
+      validationErrors: action.error,
+      addedDish: null,
+    })),
   ),
 });
 

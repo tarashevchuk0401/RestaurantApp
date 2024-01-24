@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MatDialogRef} from '@angular/material/dialog';
-import {MatInput} from '@angular/material/input';
-import {DataBaseService} from '../../services/data-base.service';
 import {Store} from '@ngrx/store';
 import {menuActions} from '../../store/actions';
 import {selectCategories} from '../../store/reducers';
@@ -15,13 +13,12 @@ import {nanoid} from 'nanoid';
   styleUrls: ['./add-dish.component.scss'],
 })
 export class AddDishComponent implements OnInit {
-  formDish: any;
+  formDish!: FormGroup ;
   allCategories: any = this.store.select(selectCategories);
 
   constructor(
     public dialogRef: MatDialogRef<AddDishComponent>,
     private fb: FormBuilder,
-    private dataBaseService: DataBaseService,
     private store: Store
   ) {}
 
@@ -44,14 +41,21 @@ export class AddDishComponent implements OnInit {
   }
 
   addNewDish() {
+    if (!this.formDish) {
+      return;
+    }
+
     const newDish: Dish = {
       title: this.formDish.value.title,
+      // Creating string[] from input. For making paragraphs
       description: this.formDish.value.description
         .split('\n')
         .filter((i: string) => i !== ''),
 
       price: this.formDish.value.price,
-      imageUrl: 'https://images.pexels.com/photos/2097090/pexels-photo-2097090.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      imageUrl:
+        'https://images.pexels.com/photos/2097090/pexels-photo-2097090.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        // Creating string[] from input. For making paragraphs
       ingredients: this.formDish.value.ingredients
         .replaceAll(',', ' ')
         .split(' ')
@@ -60,8 +64,7 @@ export class AddDishComponent implements OnInit {
       category: this.formDish.value.category,
       id: nanoid(),
     };
-    console.log(newDish);
 
-    this.dataBaseService.addDish(newDish).subscribe((d) => console.log(d));
+    this.store.dispatch(menuActions.addDish({dish: newDish}));
   }
 }

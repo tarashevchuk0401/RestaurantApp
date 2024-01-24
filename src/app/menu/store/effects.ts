@@ -49,3 +49,25 @@ export const getCategories = createEffect(
     },
     {functional: true}
 )
+export const addDish = createEffect(
+    (actions$ = inject(Actions), dataBaseService = inject(DataBaseService)) => {
+        return actions$.pipe(
+            ofType(menuActions.addDish),
+            switchMap(({dish}) => {
+                return dataBaseService.addDish(dish).pipe(
+                    map((dish) => {
+                        return menuActions.addDishSuccess({dish})
+                    }),
+                    catchError((errorResponse: HttpErrorResponse) => {
+                        return of(
+                          menuActions.getCategoriesFailed({
+                            error: errorResponse.error.error.message,
+                          })
+                        );
+                      })
+                )
+            })
+        )
+    },
+    {functional: true}
+)
