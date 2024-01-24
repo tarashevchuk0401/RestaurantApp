@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {AddCategoryComponent} from '../../dialogs/add-category/add-category.component';
+import { AddDishComponent } from '../../dialogs/add-dish/add-dish.component';
 
 @Component({
   selector: 'app-main-menu',
@@ -12,5 +13,8 @@ export class MainMenuComponent {
 
   addCategory(): void {
     const dialogRef = this.dialog.open(AddCategoryComponent, {});
+  }
+  addDish(): void {
+    const dialogRef = this.dialog.open(AddDishComponent, {});
   }
 }

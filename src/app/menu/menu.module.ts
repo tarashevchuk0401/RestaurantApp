@@ -8,19 +8,21 @@ import { MaterialsModule } from '../shared/materials.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
 import { DataBaseService } from './services/data-base.service';
-import { FormsModule } from '@angular/forms';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 
 import * as menuEffects from './store/effects'
 import * as menuReducer from './store/reducers'
 import { EffectsModule } from '@ngrx/effects';
+import { AddDishComponent } from './dialogs/add-dish/add-dish.component';
 
 
 
 @NgModule({
   declarations: [
     MainMenuComponent,
-    AddCategoryComponent
+    AddCategoryComponent,
+    AddDishComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +30,8 @@ import { EffectsModule } from '@ngrx/effects';
     MaterialsModule,
     MatDialogModule,
     HttpClientModule,
-    FormsModule,
+    FormsModule, 
+    ReactiveFormsModule,
     RouterModule.forChild(menuRoutes),
        
     StoreModule.forFeature('menu', menuReducer.menuReducer),
