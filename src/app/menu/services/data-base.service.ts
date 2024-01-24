@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
+import { Dish } from 'src/app/shared/types/dish.interface';
 import { firebaseConfig } from 'src/environment/entironment';
 
 @Injectable({
@@ -18,5 +19,9 @@ export class DataBaseService {
     return this.http.get<string[]>(firebaseConfig.endpoints.categories + '.json').pipe(
       map(item => Object.keys(item))
     )
+  }
+
+  addDish(newDish: Dish): Observable<Dish>{
+    return this.http.put<Dish>(firebaseConfig.endpoints.menu + newDish.id +'.json', newDish)
   }
 }

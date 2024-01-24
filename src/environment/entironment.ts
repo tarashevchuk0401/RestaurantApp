@@ -9,6 +9,7 @@ export const firebaseConfig = {
     endpoints: {
       signUp: 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=',
       logIn: 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=',
-      categories: 'https://restaurant-app-af60c-default-rtdb.europe-west1.firebasedatabase.app/categories/'
+      categories: 'https://restaurant-app-af60c-default-rtdb.europe-west1.firebasedatabase.app/categories/',
+      menu: 'https://restaurant-app-af60c-default-rtdb.europe-west1.firebasedatabase.app/menu/'
     }
   };
