@@ -9,6 +9,11 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
 import { DataBaseService } from './services/data-base.service';
 import { FormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+
+import * as menuEffects from './store/effects'
+import * as menuReducer from './store/reducers'
+import { EffectsModule } from '@ngrx/effects';
 
 
 
@@ -24,7 +29,10 @@ import { FormsModule } from '@angular/forms';
     MatDialogModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forChild(menuRoutes)
+    RouterModule.forChild(menuRoutes),
+       
+    StoreModule.forFeature('menu', menuReducer.menuReducer),
+    EffectsModule.forFeature([menuEffects]),
   ],
   providers: [
     DataBaseService
