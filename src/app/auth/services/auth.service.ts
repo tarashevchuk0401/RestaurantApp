@@ -14,8 +14,7 @@ export class AuthService {
   signUp(request: AuthRequestInterface): Observable<AuthResponseInterface> {
     return this.http
       .post<AuthResponseInterface>(
-        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' +
-          firebaseConfig.apiKey,
+        firebaseConfig.endpoints.signUp + firebaseConfig.apiKey,
         request
       )
       .pipe(
@@ -30,8 +29,7 @@ export class AuthService {
   logIn(request: AuthRequestInterface): Observable<AuthResponseInterface> {
     return this.http
       .post<AuthResponseInterface>(
-        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' +
-          firebaseConfig.apiKey,
+        firebaseConfig.endpoints.logIn + firebaseConfig.apiKey,
         request
       )
       .pipe(
@@ -42,8 +40,6 @@ export class AuthService {
         })
       );
   }
-
-  
 
   logOut(): void {
     localStorage.removeItem('token');

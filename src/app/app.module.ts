@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidenavComponent } from './core/components/sidenav/sidenav.component';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
@@ -26,10 +27,10 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialsModule,
+    MatDialogModule,
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot({}, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: true }),
-
   ],
   providers: [],
   bootstrap: [AppComponent]
