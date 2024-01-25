@@ -2,11 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {AddCategoryComponent} from '../../dialogs/add-category/add-category.component';
 import {AddDishComponent} from '../../dialogs/add-dish/add-dish.component';
-import {DataBaseService} from '../../services/data-base.service';
 import {Store} from '@ngrx/store';
 import {menuActions} from '../../store/actions';
 import {selectCategories, selectMenu} from '../../store/reducers';
 import {Dish} from 'src/app/shared/types/dish.interface';
+import {SearchBarService} from 'src/app/shared/services/search-bar.service';
 
 @Component({
   selector: 'app-main-menu',
@@ -18,10 +18,21 @@ export class MainMenuComponent implements OnInit {
   displayedMenu: Dish[] | null | undefined = [];
 
   categories: string[] | null | undefined = [];
+  text: any;
 
-  constructor(public dialog: MatDialog, private store: Store) {}
+  constructor(
+    public dialog: MatDialog,
+    private store: Store,
+    private searchBarService: SearchBarService
+  ) {}
 
   ngOnInit(): void {
+    this.searchBarService.searchTerm.subscribe((d) => {
+      this.text = d;
+      console.log(d)
+    });
+
+
     this.store.dispatch(menuActions.getMenu());
     this.store
       .select(selectMenu)

@@ -12,6 +12,10 @@ import {SidenavComponent} from './core/components/sidenav/sidenav.component';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {MatDialogModule} from '@angular/material/dialog';
+import { SearchBarService } from './shared/services/search-bar.service';
+import { CoreModule } from './core/core.module';
+import { FormsModule } from '@angular/forms';
+import { MenuModule } from './menu/menu.module';
 
 @NgModule({
   declarations: [
@@ -26,10 +30,16 @@ import {MatDialogModule} from '@angular/material/dialog';
     BrowserAnimationsModule,
     MaterialsModule,
     MatDialogModule,
+    CoreModule,
+    FormsModule,
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot({}, {}),
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: true}),
   ],
   bootstrap: [AppComponent],
+  providers:[
+    SearchBarService
+  ]
+ 
 })
 export class AppModule {}

@@ -3,6 +3,9 @@
     <div class="main_logo_text">Restaurant name</div>
 </a>
 <div class="right">
+    <button (click)="setSearchTerm()">TEST</button>
+    <input type="text"   [(ngModel)]="keyWord">
+
     <ng-container *ngIf="isAuthenticated">
         <a class="button1" routerLink="/" (click)="logOut()">Log out</a>
     </ng-container>

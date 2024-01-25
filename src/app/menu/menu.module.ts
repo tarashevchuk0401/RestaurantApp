@@ -16,10 +16,10 @@ import * as menuReducer from './store/reducers';
 import {EffectsModule} from '@ngrx/effects';
 import {AddDishComponent} from './dialogs/add-dish/add-dish.component';
 import {TruncatePipe} from '../shared/pipes/truncate.pipe';
+import {SearchBarService} from '../shared/services/search-bar.service';
 
 @NgModule({
   declarations: [MainMenuComponent, AddCategoryComponent, AddDishComponent],
-  providers: [DataBaseService],
   imports: [
     CommonModule,
     MenuRoutingModule,
@@ -33,5 +33,6 @@ import {TruncatePipe} from '../shared/pipes/truncate.pipe';
     EffectsModule.forFeature([menuEffects]),
     TruncatePipe,
   ],
+  providers: [DataBaseService, SearchBarService],
 })
 export class MenuModule {}

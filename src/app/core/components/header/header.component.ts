@@ -1,8 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Store} from '@ngrx/store';
+import { debounceTime, fromEvent, switchMap } from 'rxjs';
 import {authActions} from 'src/app/auth/store/actions';
 import {selectCurrentUser} from 'src/app/auth/store/reducers';
 import {AuthResponseInterface} from 'src/app/auth/types/authResponse.interface';
+import {SearchBarService} from 'src/app/shared/services/search-bar.service';
 
 @Component({
   selector: 'app-header',
@@ -12,8 +14,14 @@ import {AuthResponseInterface} from 'src/app/auth/types/authResponse.interface';
 export class HeaderComponent implements OnInit {
   isAuthenticated: boolean = false;
   isAdmin: boolean = false;
+  keyWord:string = '';
 
-  constructor(private store: Store) {}
+  // @ViewChild ('searchTerm') searchTerm : ElementRef | undefined;
+
+  constructor(
+    private store: Store,
+    private searchBarService: SearchBarService
+  ) {}
 
   ngOnInit(): void {
     if (localStorage.getItem('token')) {
@@ -36,4 +44,11 @@ export class HeaderComponent implements OnInit {
     localStorage.removeItem('id');
     this.isAuthenticated = false;
   }
+
+  setSearchTerm() {
+    this.searchBarService.setSearchTerm(this.keyWord)
+    
+  }
+  
+ 
 }
