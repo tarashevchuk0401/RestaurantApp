@@ -1,6 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Store} from '@ngrx/store';
-import { debounceTime, fromEvent, switchMap } from 'rxjs';
+import {debounceTime, from, fromEvent, switchMap} from 'rxjs';
 import {authActions} from 'src/app/auth/store/actions';
 import {selectCurrentUser} from 'src/app/auth/store/reducers';
 import {AuthResponseInterface} from 'src/app/auth/types/authResponse.interface';
@@ -14,14 +14,10 @@ import {SearchBarService} from 'src/app/shared/services/search-bar.service';
 export class HeaderComponent implements OnInit {
   isAuthenticated: boolean = false;
   isAdmin: boolean = false;
-  keyWord:string = '';
 
-  // @ViewChild ('searchTerm') searchTerm : ElementRef | undefined;
+  @ViewChild('searchTerm') searchTerm: ElementRef | undefined;
 
-  constructor(
-    private store: Store,
-    private searchBarService: SearchBarService
-  ) {}
+  constructor(private store: Store, private searchBarService: SearchBarService) {}
 
   ngOnInit(): void {
     if (localStorage.getItem('token')) {
@@ -46,9 +42,11 @@ export class HeaderComponent implements OnInit {
   }
 
   setSearchTerm() {
-    this.searchBarService.setSearchTerm(this.keyWord)
-    
+    const observableInput = fromEvent(this.searchTerm?.nativeElement, 'input');
+
+    //Adding debounceTime for better user experience
+    return observableInput.pipe(debounceTime(500)).subscribe(() => {
+      this.searchBarService.setSearchTerm(this.searchTerm?.nativeElement.value);
+    });
   }
-  
- 
 }

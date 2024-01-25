@@ -31,6 +31,6 @@ import { SharedModule } from '../shared/shared.module';
     EffectsModule.forFeature([menuEffects]),
     TruncatePipe,
   ],
-  providers: [DataBaseService, SearchBarService],
+  providers: [DataBaseService],
 })
 export class MenuModule {}

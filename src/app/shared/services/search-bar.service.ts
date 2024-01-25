@@ -5,11 +5,9 @@ import {BehaviorSubject, Observable, Subject} from 'rxjs';
   providedIn: 'root',
 })
 export class SearchBarService {
-  public searchTerm: BehaviorSubject<string> = new BehaviorSubject<string>('init');
+  public searchTerm: Subject<string> = new Subject<string>();
 
-  constructor() {
-    this.searchTerm.subscribe((d) => console.log(d));
-  }
+  constructor() {}
 
   setSearchTerm(keyword: string) {
     this.searchTerm.next(keyword);

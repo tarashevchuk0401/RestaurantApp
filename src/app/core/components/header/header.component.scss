@@ -24,6 +24,21 @@
   display: flex;
 }
 
+.header_input{
+  border: none;
+  background-color: $color_light_blue;
+  border-radius: 15px;
+  width: 250px;
+  padding: 5px;
+  font-size: 18px;
+
+  &:focus{
+    outline: none;
+  }
+
+  
+}
+
 @media (max-width: 560px) {
   .left {
     .main_logo_text {

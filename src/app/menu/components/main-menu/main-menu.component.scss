@@ -98,6 +98,12 @@
 
 
         }
+
+        .error{
+            color: $color_dark_blue;
+            text-align: center;
+            margin-top: 100px;
+        }
     }
 }
 
@@ -121,4 +127,10 @@
     &:hover{
         background-color: $color_light_blue;
     }
+}
+
+.active_cat{
+    background-color: $color_light_blue;
+    text-decoration: underline;
+    
 }

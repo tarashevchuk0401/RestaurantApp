@@ -1,14 +1,13 @@
 
 <div class="wrapper">
     <div class="admin_pannel">
-        <div>{{text}}</div>
         <button class="button1" (click)="addCategory()">Add New Catrgory</button>
         <button class="button1" (click)="addDish()">Add New Dish</button>
     </div>
     <div class="categories">
-        <button class="category_item" (click)="filterByCategory('all')">All</button>
+        <button class="category_item" (click)="filterByCategory('all')" [ngClass]="{'active_cat': currentCategory == 'all'}">All</button>
         <div class="categories_wrapper" *ngFor="let category of categories">
-            <button class="category_item" (click)="filterByCategory(category)">{{category}}</button>
+            <button class="category_item"  (click)="filterByCategory(category)" [ngClass]="{'active_cat': currentCategory == category}">{{category}}</button>
         </div>
     </div>
     <div class="menu">
@@ -33,6 +32,9 @@
                 </div>
             </div>
         </ng-container>
+        <div class="error" *ngIf="displayedMenu?.length === 0">
+            <h1>Try agin...</h1>
+        </div>
     </div>
 </div>
 
