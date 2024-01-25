@@ -27,11 +27,15 @@ export class MainMenuComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.searchBarService.searchTerm.subscribe((d) => {
-      this.text = d;
-      console.log(d)
-    });
+    // this.searchBarService.searchTerm.subscribe((d) => {
+    //   this.text = d;
+    //   console.log(d);
+    // });
 
+    this.searchBarService.listenSearchTerm().subscribe((d) => {
+      this.text = d;
+      console.log(d);
+    });
 
     this.store.dispatch(menuActions.getMenu());
     this.store

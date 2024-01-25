@@ -12,6 +12,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import * as authEffects from './store/effects'
 import * as authReducer from './store/reducers'
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -23,11 +24,9 @@ import * as authReducer from './store/reducers'
   imports: [
     CommonModule,
     AuthRoutingModule,
-    FormsModule,
-    MaterialsModule,
-    HttpClientModule,
+    SharedModule,
     RouterModule.forChild(authRoutes),
-    
+    MaterialsModule,
     StoreModule.forFeature('auth', authReducer.authReducer),
     EffectsModule.forFeature([authEffects]),
   ],

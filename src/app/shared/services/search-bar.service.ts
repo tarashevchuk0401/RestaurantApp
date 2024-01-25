@@ -1,20 +1,21 @@
-import { Injectable, OnInit } from '@angular/core';
-import { BehaviorSubject, Subject } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {BehaviorSubject, Observable, Subject} from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class SearchBarService  {
+export class SearchBarService {
+  public searchTerm: BehaviorSubject<string> = new BehaviorSubject<string>('init');
 
- public searchTerm: BehaviorSubject<string> = new BehaviorSubject<string>('init');
-  
-  constructor() { 
-    this.searchTerm.subscribe(d => console.log(d))
+  constructor() {
+    this.searchTerm.subscribe((d) => console.log(d));
   }
 
-
-  setSearchTerm(keyword: string){
+  setSearchTerm(keyword: string) {
     this.searchTerm.next(keyword);
   }
 
+  listenSearchTerm(): Observable<string> {
+    return this.searchTerm.asObservable();
+  }
 }

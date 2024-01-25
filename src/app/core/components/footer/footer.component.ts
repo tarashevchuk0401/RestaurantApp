@@ -13,7 +13,6 @@ export class FooterComponent implements OnInit {
   constructor(private searchBarService: SearchBarService){}
 
   ngOnInit(): void {
-    
     this.searchBarService.searchTerm.subscribe(d => this.text = d)
   }
 

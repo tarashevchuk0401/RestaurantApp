@@ -11,35 +11,24 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {SidenavComponent} from './core/components/sidenav/sidenav.component';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
-import {MatDialogModule} from '@angular/material/dialog';
-import { SearchBarService } from './shared/services/search-bar.service';
-import { CoreModule } from './core/core.module';
-import { FormsModule } from '@angular/forms';
-import { MenuModule } from './menu/menu.module';
+import {SearchBarService} from './shared/services/search-bar.service';
+import {CoreModule} from './core/core.module';
+import {SharedModule} from './shared/shared.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    SidenavComponent,
-  ],
+  declarations: [AppComponent, HeaderComponent, FooterComponent, SidenavComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialsModule,
-    MatDialogModule,
     CoreModule,
-    FormsModule,
+    SharedModule,
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot({}, {}),
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: true}),
   ],
   bootstrap: [AppComponent],
-  providers:[
-    SearchBarService
-  ]
- 
+  providers: [SearchBarService],
 })
 export class AppModule {}

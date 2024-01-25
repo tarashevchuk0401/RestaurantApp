@@ -17,6 +17,7 @@ import {EffectsModule} from '@ngrx/effects';
 import {AddDishComponent} from './dialogs/add-dish/add-dish.component';
 import {TruncatePipe} from '../shared/pipes/truncate.pipe';
 import {SearchBarService} from '../shared/services/search-bar.service';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [MainMenuComponent, AddCategoryComponent, AddDishComponent],
@@ -24,10 +25,7 @@ import {SearchBarService} from '../shared/services/search-bar.service';
     CommonModule,
     MenuRoutingModule,
     MaterialsModule,
-    MatDialogModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
+    SharedModule,
     RouterModule.forChild(menuRoutes),
     StoreModule.forFeature('menu', menuReducer.menuReducer),
     EffectsModule.forFeature([menuEffects]),
