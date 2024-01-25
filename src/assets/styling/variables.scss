@@ -7,6 +7,7 @@ $color_red: #c33333;
 .button1{
     background-color: $color_dark_blue;
     border: none;
+    border-radius: 8px;
     padding: 8px;
     text-align: center;
     font-size: 18px;
@@ -23,7 +24,13 @@ $color_red: #c33333;
     &:disabled{
         background-color: $color_light_blue;
         pointer-events: none;
+        color: gray;
     }
+}
+
+.red{
+    background-color: $color_red;
+    color: black;
 }
 
 

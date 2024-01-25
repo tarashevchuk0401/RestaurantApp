@@ -1,11 +1,17 @@
 
 <div class="wrapper">
     <div class="admin_pannel">
-        <button class="button1" (click)="addCategory()">addCatrgory</button>
-        <button class="button1" (click)="addDish()">addDish</button>
+        <button class="button1" (click)="addCategory()">Add New Catrgory</button>
+        <button class="button1" (click)="addDish()">Add New Dish</button>
+    </div>
+    <div class="categories">
+        <button class="category_item" (click)="filterByCategory('all')">All</button>
+        <div class="categories_wrapper" *ngFor="let category of categories">
+            <button class="category_item" (click)="filterByCategory(category)">{{category}}</button>
+        </div>
     </div>
     <div class="menu">
-        <ng-container *ngFor="let dish of mainMenu">
+        <ng-container *ngFor="let dish of displayedMenu">
             <div class="card">
                 <div class="card_img">
                     <img src="{{dish.imageUrl}}" alt="">
@@ -19,10 +25,8 @@
                     <p>{{dish.description[0]| truncate}}</p>
                     </div>
                     <div class="card_details_ingredients">
-                       
                        <div class=""  *ngFor="let ingredients of dish.ingredients">
                         <div class="ingredients">{{ingredients}}</div>
-                 
                     </div>
                     </div>
                 </div>

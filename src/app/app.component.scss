@@ -17,10 +17,16 @@
   }
 }
 
+mat-sidenav-container{
+  background-color: $color_white;
+}
+
 mat-sidenav-content {
   min-height: 92vh;
-  background-color: $color_white;
   position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+  // overflow: hidden;
   
   
   app-footer {
@@ -32,6 +38,8 @@ mat-sidenav-content {
 mat-sidenav{
   background-color: $color_light_blue;
 }
+
+
 
 @media (max-width: 768px) {
   .header {

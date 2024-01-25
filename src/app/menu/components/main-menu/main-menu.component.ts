@@ -3,10 +3,10 @@ import {MatDialog} from '@angular/material/dialog';
 import {AddCategoryComponent} from '../../dialogs/add-category/add-category.component';
 import {AddDishComponent} from '../../dialogs/add-dish/add-dish.component';
 import {DataBaseService} from '../../services/data-base.service';
-import { Store } from '@ngrx/store';
-import { menuActions } from '../../store/actions';
-import { selectMenu } from '../../store/reducers';
-import { Dish } from 'src/app/shared/types/dish.interface';
+import {Store} from '@ngrx/store';
+import {menuActions} from '../../store/actions';
+import {selectCategories, selectMenu} from '../../store/reducers';
+import {Dish} from 'src/app/shared/types/dish.interface';
 
 @Component({
   selector: 'app-main-menu',
@@ -14,17 +14,29 @@ import { Dish } from 'src/app/shared/types/dish.interface';
   styleUrls: ['./main-menu.component.scss'],
 })
 export class MainMenuComponent implements OnInit {
-  mainMenu: Dish[] | null | undefined = []
+  allMenu: Dish[] | null | undefined = [];
+  displayedMenu: Dish[] | null | undefined = [];
 
-  constructor(
-    public dialog: MatDialog,
-    private store: Store
-  ) {}
+  categories: string[] | null | undefined = [];
+
+  constructor(public dialog: MatDialog, private store: Store) {}
 
   ngOnInit(): void {
     this.store.dispatch(menuActions.getMenu());
+    this.store
+      .select(selectMenu)
+      .subscribe((menu: Dish[] | null | undefined) => {
+        menu?.map((i) => this.allMenu?.push(i));
+        menu?.map((i) => this.displayedMenu?.push(i));
+      });
 
-    this.store.select(selectMenu).subscribe((menu: Dish[] | null | undefined) => this.mainMenu = menu);
+    this.store.dispatch(menuActions.getCategories());
+    this.store
+      .select(selectCategories)
+      .subscribe(
+        (allCategories: string[] | null | undefined) =>
+          (this.categories = allCategories)
+      );
   }
 
   addCategory(): void {
@@ -33,5 +45,15 @@ export class MainMenuComponent implements OnInit {
 
   addDish(): void {
     const dialogRef = this.dialog.open(AddDishComponent, {});
+  }
+
+  filterByCategory(category: string): void {
+    if (category === 'all' && this.allMenu) {
+      this.displayedMenu?.push(...this.allMenu);
+    } else {
+      this.displayedMenu = this.allMenu?.filter(
+        (dish: Dish) => dish.category === category
+      );
+    }
   }
 }
