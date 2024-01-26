@@ -1,5 +1,5 @@
-import {Component, OnDestroy} from '@angular/core';
-import {NgForm} from '@angular/forms';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
 import {AuthRequestInterface} from '../types/authRequest.interface';
 import {AuthStateInterface} from '../types/authState.interface';
 import {Store} from '@ngrx/store';
@@ -12,13 +12,21 @@ import {Subject, takeUntil} from 'rxjs';
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss'],
 })
-export class SignUpComponent implements OnDestroy {
+export class SignUpComponent implements OnDestroy, OnInit {
   errorMessage: string = '';
   unsubscribing$ = new Subject();
+  signUpForm!: FormGroup;
 
-  constructor(private store: Store<{auth: AuthStateInterface}>) {}
+  constructor(private store: Store<{auth: AuthStateInterface}>, private fb: FormBuilder) {}
 
-  onSubmitSignUp(form: NgForm): void {
+  ngOnInit(): void {
+    this.signUpForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(1) ]],
+    })
+  }
+
+  onSubmitSignUp(form: FormGroup): void {
     if (form.invalid) {
       return;
     }

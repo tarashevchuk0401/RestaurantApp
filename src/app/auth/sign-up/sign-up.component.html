@@ -1,21 +1,25 @@
-<form #signUpForm="ngForm" (ngSubmit)="onSubmitSignUp(signUpForm)">
+<form [formGroup]="signUpForm" (ngSubmit)="onSubmitSignUp(signUpForm)">
   <mat-form-field appearance="fill">
     <mat-label>Email</mat-label>
-    <input matInput type="email" required ngModel name="email">
+    <input matInput type="email" formControlName="email">
+    <mat-error>Email is required</mat-error>
   </mat-form-field>
+
   <mat-form-field appearance="fill">
     <mat-label>Password</mat-label>
-    <input matInput type="password" required ngModel name="password">
+    <input matInput type="password" formControlName="password">
+    <mat-error>Password should contain more than 6 characters</mat-error>
   </mat-form-field>
+  
+  <div class="error" >
+      {{errorMessage}}
+  </div>
+
   <div class="redirect">
     <div class="redirect_text">Already have an account?</div>
     <div class="redirect_text">Go to <a class="redirect_text_link" routerLink="/auth/log-in">Log in</a>
     </div>
   </div>
+
   <button class="button1" type="submit" [disabled]="signUpForm.invalid">Sign up</button>
-  <ng-container *ngIf="errorMessage">
-    <div class="error">
-      {{errorMessage}}
-    </div>
-  </ng-container>
 </form>

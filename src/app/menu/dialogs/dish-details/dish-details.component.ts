@@ -8,17 +8,10 @@ import {Dish} from 'src/app/shared/types/dish.interface';
   templateUrl: './dish-details.component.html',
   styleUrls: ['./dish-details.component.scss'],
 })
-export class DishDetailsComponent implements OnInit {
+export class DishDetailsComponent  {
   constructor(
     @Inject(MAT_DIALOG_DATA) public dish: Dish,
     public dialogRef: MatDialogRef<AddDishComponent>
   ) {}
 
-  ngOnInit(): void {
-    // this.scrollStrategyOptions = this.scrollStrategyOptions.noop()
-  }
-
-  test() {
-    console.log(this.dish);
-  }
 }

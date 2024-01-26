@@ -1,6 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Store} from '@ngrx/store';
-import {debounceTime, from, fromEvent, switchMap} from 'rxjs';
+import {Subscription, debounceTime, fromEvent} from 'rxjs';
 import {authActions} from 'src/app/auth/store/actions';
 import {selectCurrentUser} from 'src/app/auth/store/reducers';
 import {AuthResponseInterface} from 'src/app/auth/types/authResponse.interface';
@@ -42,7 +42,7 @@ export class HeaderComponent implements OnInit {
     location.reload();
   }
 
-  setSearchTerm() {
+  setSearchTerm(): Subscription {
     const observableInput = fromEvent(this.searchTerm?.nativeElement, 'input');
 
     //Adding debounceTime for better user experience
