@@ -18,9 +18,10 @@ import {AddDishComponent} from './dialogs/add-dish/add-dish.component';
 import {TruncatePipe} from '../shared/pipes/truncate.pipe';
 import {SearchBarService} from '../shared/services/search-bar.service';
 import { SharedModule } from '../shared/shared.module';
+import { DishDetailsComponent } from './dialogs/dish-details/dish-details.component';
 
 @NgModule({
-  declarations: [MainMenuComponent, AddCategoryComponent, AddDishComponent],
+  declarations: [MainMenuComponent, AddCategoryComponent, AddDishComponent, DishDetailsComponent, DishDetailsComponent],
   imports: [
     CommonModule,
     MenuRoutingModule,

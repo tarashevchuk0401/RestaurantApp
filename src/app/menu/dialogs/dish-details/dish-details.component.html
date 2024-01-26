@@ -1,0 +1,19 @@
+<div class="wrapper"mat-dialog-content >
+    <div class="header">
+        <div class="category">
+            {{dish.category}}
+        </div>
+        <img src="{{dish.imageUrl}}" alt="dish">
+        <span class="title">{{dish.title}}</span>
+    </div>
+    <div class="info"  >
+        <div *ngFor="let paragraph of dish.description">
+            <p>{{paragraph}}</p>
+        </div>
+        <div class="ingredients_container" *ngFor="let ingredients of dish.ingredients">
+            <div class="ingredients"></div>
+        </div>
+    </div>
+</div>
+
+
