@@ -21,6 +21,8 @@ export class MainMenuComponent implements OnInit, AfterViewInit {
   categories: string[] | null | undefined = [];
   currentCategory: string = 'all';
 
+  isAuthenticated: boolean = Boolean(localStorage.getItem('token'))
+
   constructor(
     public dialog: MatDialog,
     private store: Store,
@@ -30,8 +32,10 @@ export class MainMenuComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.store.dispatch(menuActions.getMenu());
     this.store.select(selectMenu).subscribe((menu: Dish[] | null | undefined) => {
-      menu?.map((i) => this.allMenu?.push(i));
-      menu?.map((i) => this.displayedMenu?.push(i));
+      if(this.allMenu?.length === 0){
+        menu?.map((i) => this.allMenu?.push(i));
+        menu?.map((i) => this.displayedMenu?.push(i));
+      }
     });
 
     this.store.dispatch(menuActions.getCategories());

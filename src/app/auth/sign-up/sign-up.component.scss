@@ -13,10 +13,7 @@ form {
   margin-top: 100px;
 
   mat-form-field {
-    margin-top: 50px;
-
     input {
-      margin: 15px;
     }
   }
 
@@ -33,9 +30,13 @@ form {
         .redirect_text_link{
             color: $color_dark_blue;
         }
-    }
-  }
 
+      }
+    }
+    
+    button{
+      margin-top: 20px;
+    };
 }
 
 .error{

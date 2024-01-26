@@ -11,37 +11,57 @@
   color: $color_light_blue;
 
   .main_logo {
-    width: 30px;
+    margin-left: 10px;
+    width: 40px;
+    object-fit: contain;
   }
 
   .main_logo_text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: 400;
     font-size: 30px;
-    font-style: italic;
+    letter-spacing: 5px;
+    margin-left: 15px;
+    
   }
 }
 
 .right {
   display: flex;
+
+  .actions{
+    display: flex;
+
+  }
 }
 
-.header_input{
+.header_input {
   border: none;
   background-color: $color_light_blue;
   border-radius: 15px;
   width: 250px;
   padding: 5px;
   font-size: 18px;
+  margin-right:  5px;
 
-  &:focus{
+  &:focus {
     outline: none;
   }
-
-  
 }
 
-@media (max-width: 560px) {
+@media (max-width: 768px) {
   .left {
+    .main_logo{
+      width: 25px;
+    }
+
     .main_logo_text {
+      display: none;
+    }
+  }
+
+  .right{
+    .actions{
       display: none;
     }
   }

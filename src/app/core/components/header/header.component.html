@@ -1,14 +1,17 @@
 <a class="left" routerLink="/">
     <img class="main_logo" src="assets/icons/icons8-restaurant-50.png" alt="logo_restaurant">
-    <div class="main_logo_text">Restaurant name</div>
+    <div class="main_logo_text">Gastronomy Gateway</div>
 </a>
 <div class="right">
     <input class="header_input" type="text" #searchTerm placeholder="Search by title..."  (input)="setSearchTerm()">
-    <ng-container *ngIf="isAuthenticated">
-        <a class="button1" routerLink="/" (click)="logOut()">Log out</a>
-    </ng-container>
-    <ng-container *ngIf="!isAuthenticated">
-        <a class="button1" routerLink="/auth/log-in">Log in</a>
-        <a class="button1" routerLink="/auth/sign-up">Sign up</a>
-    </ng-container>
+    <div class="actions">
+        
+        <ng-container *ngIf="isAuthenticated">
+            <a class="button1" routerLink="/" (click)="logOut()">Log out</a>
+        </ng-container>
+        <ng-container *ngIf="!isAuthenticated">
+            <a class="button1" routerLink="/auth/log-in">Log in</a>
+            <a class="button1" routerLink="/auth/sign-up">Sign up</a>
+        </ng-container>
+    </div>
 </div>

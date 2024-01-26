@@ -13,10 +13,8 @@ form {
   margin-top: 100px;
 
   mat-form-field {
-    margin-top: 50px;
 
     input {
-      margin: 15px;
     }
   }
 
@@ -36,7 +34,13 @@ form {
     }
   }
 
+  button{
+    margin-top: 20px;
+  };
+
 }
+
+
 
 .error{
   color: $color_red;

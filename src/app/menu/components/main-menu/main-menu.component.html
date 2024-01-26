@@ -1,6 +1,6 @@
 
 <div class="wrapper">
-    <div class="admin_pannel">
+    <div class="admin_pannel" *ngIf="isAuthenticated">
         <button class="button1" (click)="addCategory()">Add New Catrgory</button>
         <button class="button1" (click)="addDish()">Add New Dish</button>
     </div>

@@ -39,6 +39,7 @@ export class HeaderComponent implements OnInit {
     localStorage.removeItem('token');
     localStorage.removeItem('id');
     this.isAuthenticated = false;
+    location.reload();
   }
 
   setSearchTerm() {
