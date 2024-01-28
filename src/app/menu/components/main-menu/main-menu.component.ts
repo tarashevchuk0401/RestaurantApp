@@ -9,6 +9,7 @@ import {Dish} from 'src/app/shared/types/dish.interface';
 import {SearchBarService} from 'src/app/shared/services/search-bar.service';
 import {DishDetailsComponent} from '../../dialogs/dish-details/dish-details.component';
 import {Subject, takeUntil} from 'rxjs';
+import { DataBaseService } from '../../services/data-base.service';
 
 @Component({
   selector: 'app-main-menu',
@@ -29,7 +30,8 @@ export class MainMenuComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(
     public dialog: MatDialog,
     private store: Store,
-    private searchBarService: SearchBarService
+    private searchBarService: SearchBarService,
+    private dataBaseService: DataBaseService,
   ) {}
 
   ngOnInit(): void {
@@ -86,5 +88,9 @@ export class MainMenuComponent implements OnInit, AfterViewInit, OnDestroy {
       this.displayedMenu = this.allMenu?.filter((dish: Dish) => dish.category === category);
       this.currentCategory = category;
     }
+  }
+
+  deleteDish(id: string){
+    this.dataBaseService.deleteDish(id).subscribe(() => location.reload());
   }
 }

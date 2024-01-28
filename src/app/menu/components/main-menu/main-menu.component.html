@@ -1,17 +1,18 @@
-
 <div class="wrapper">
     <div class="admin_pannel" *ngIf="isAuthenticated">
         <button class="button1" (click)="addCategory()">Add New Catrgory</button>
         <button class="button1" (click)="addDish()">Add New Dish</button>
     </div>
     <div class="categories">
-        <button class="category_item" (click)="filterByCategory('all')" [ngClass]="{'active_cat': currentCategory == 'all'}">All</button>
+        <button class="category_item" (click)="filterByCategory('all')"
+            [ngClass]="{'active_cat': currentCategory == 'all'}">All</button>
         <div class="categories_wrapper" *ngFor="let category of categories">
-            <button class="category_item"  (click)="filterByCategory(category)" [ngClass]="{'active_cat': currentCategory == category}">{{category}}</button>
+            <button class="category_item" (click)="filterByCategory(category)"
+                [ngClass]="{'active_cat': currentCategory == category}">{{category}}</button>
         </div>
     </div>
     <div class="menu">
-        <ng-container *ngFor="let dish of displayedMenu">
+        <div class="card_wrapper" *ngFor="let dish of displayedMenu">
             <div class="card" routerLink="/dish/{{dish.id}}">
                 <div class="card_img">
                     <img src="{{dish.imageUrl}}" alt="">
@@ -21,22 +22,22 @@
                         <div class="title">{{dish.title}}</div>
                         <div class="price">{{dish.price | currency}}</div>
                     </div>
-                    <div class="card_details_description" *ngIf="dish.description" >
-                    <p>{{dish.description[0]| truncate}}</p>
+                    <div class="card_details_description" *ngIf="dish.description">
+                        <p>{{dish.description[0]| truncate}}</p>
                     </div>
                     <div class="card_details_ingredients">
-                       <div class=""  *ngFor="let ingredients of dish.ingredients">
-                        <div class="ingredients">{{ingredients}}</div>
-                    </div>
+                        <div class="" *ngFor="let ingredients of dish.ingredients">
+                            <div class="ingredients">{{ingredients}}</div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </ng-container>
+            <ng-container *ngIf="isAuthenticated">
+                <button class="button1 red" (click)="deleteDish(dish.id)">DELETE</button>
+            </ng-container>
+        </div>
         <div class="error" *ngIf="displayedMenu?.length === 0">
             <h1>Try agin...</h1>
         </div>
     </div>
 </div>
-
-
-

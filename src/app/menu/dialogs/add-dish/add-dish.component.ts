@@ -6,8 +6,7 @@ import {menuActions} from '../../store/actions';
 import {selectCategories} from '../../store/reducers';
 import {Dish} from 'src/app/shared/types/dish.interface';
 import {nanoid} from 'nanoid';
-import { AngularFireStorage } from '@angular/fire/compat/storage'
-
+import {AngularFireStorage} from '@angular/fire/compat/storage';
 
 @Component({
   selector: 'app-add-dish',
@@ -23,8 +22,7 @@ export class AddDishComponent implements OnInit {
     public dialogRef: MatDialogRef<AddDishComponent>,
     private fb: FormBuilder,
     private store: Store,
-    private fireStorage: AngularFireStorage,
-
+    private fireStorage: AngularFireStorage
   ) {}
 
   ngOnInit(): void {
@@ -42,18 +40,13 @@ export class AddDishComponent implements OnInit {
     });
   }
 
-  async addNewDish(): Promise<void>  {
-  
-    
-
-    const newDish: Dish = {
+  async addNewDish() {
+    let newDish: Dish = {
       title: this.formDish.value.title,
       // Creating string[] from input. For making paragraphs
       description: this.formDish.value.description.split('\n').filter((i: string) => i !== ''),
 
       price: this.formDish.value.price,
-      imageUrl:
-        'https://images.pexels.com/photos/2097090/pexels-photo-2097090.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
       // Creating string[] from input. For making paragraphs
       ingredients: this.formDish.value.ingredients
         .replaceAll(',', ' ')
@@ -66,19 +59,17 @@ export class AddDishComponent implements OnInit {
 
     if (this.imageFile) {
       let path = `${this.imageFile.name}`;
-      const uploadTask = await this.fireStorage.upload(path, this.imageFile)
+      const uploadTask = await this.fireStorage.upload(path, this.imageFile);
       const url = await uploadTask.ref.getDownloadURL();
       newDish.imageUrl = url;
     }
 
-    if(this.formDish.valid){
-      console.log('added')
-      this.store.dispatch(menuActions.addDish({dish: newDish}));
-    }
+    this.store.dispatch(menuActions.addDish({dish: newDish}));
+
+    this.formDish.reset();
   }
 
   uploadImage(event: any): void {
     this.imageFile = event.target.files[0];
-    console.log(this.imageFile)
   }
 }

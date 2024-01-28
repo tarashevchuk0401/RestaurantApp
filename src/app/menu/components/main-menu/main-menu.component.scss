@@ -17,36 +17,37 @@
         overflow-x: scroll;
         flex-grow: 1;
         margin-top: 15px;
-        // transform: translateX(50px);
-
-        // .categories_wrapper{
-        //     display: flex;
-        //     justify-content: center;
-        //     flex-direction: row;
-
-
-        // }
-
+    
     }
     
     .menu{
         display: flex;
         justify-content: center;
+        align-items: baseline;
         flex-direction: row;
         flex-wrap: wrap;
-
-        .card{
-            border-radius: 20px;
-            width: 320px;
-            margin: 30px;
-            overflow: hidden;
-            transition: all ease .2s;
-            cursor: pointer;
-
-            &:hover{
-                background-color: $color_light_blue;
+        
+        .card_wrapper{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: baseline;
+            
+            .card{
+                border-radius: 20px;
+                width: 320px;
+                margin: 30px;
+                overflow: hidden;
+                transition: all ease .2s;
+                cursor: pointer;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                
+                &:hover{
+                    background-color: $color_light_blue;
             }
-
+            
             .card_img{
                 overflow: hidden;
                 img{
@@ -56,28 +57,28 @@
                     border-radius: 20px;
                 }
             }
-
+            
             .card_details{
                 margin-top: 20px;
                 padding: 20px;
-
+                
                 .card_details_info{
                     display: flex;
                     justify-content: space-between;
                     font-weight: 600;
                     font-size: 22px;
-
+                    
                     .price{
                         color: $color_red;
                     }
                 }
-
+                
                 .card_details_description{
                     p{
                         text-align: justify;
                         margin-top: 15px;
                     }
-            
+                    
                 }
 
                 .card_details_ingredients{
@@ -86,7 +87,7 @@
                     flex-direction: row;
                     flex-wrap: wrap;
                     justify-content: flex-start;
-
+                    
                     .ingredients{
                         background-color: $color_blue;
                         margin-right: 10px;
@@ -99,6 +100,7 @@
                 }
             }
 
+        }
 
         }
 
@@ -136,6 +138,11 @@
     background-color: $color_light_blue;
     text-decoration: underline;
     
+}
+
+.button1{
+    margin: 10px auto;
+    // margin: 10px 0;
 }
 
 @media (max-width:650px) {

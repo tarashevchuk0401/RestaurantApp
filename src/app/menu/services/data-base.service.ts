@@ -35,4 +35,10 @@ export class DataBaseService {
   getDishById(id: string):Observable<Dish>{
     return this.http.get<Dish>(firebaseConfig.endpoints.menu + `/${id}.json`)
   }
+  
+  deleteDish(id:string):Observable<Dish>{
+
+    return this.http.delete<Dish>(firebaseConfig.endpoints.menu + `/${id}.json`)
+
+  }
 }
