@@ -45,10 +45,9 @@
       font-size: 22px;
       line-height: 32px;
 
-      &::first-letter{
+      &::first-letter {
         margin-left: 20px;
       }
-      
     }
 
     .ingredients_container {
@@ -66,6 +65,58 @@
         margin: 10px;
         border-radius: 10px;
         text-transform: capitalize;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    display: flex;
+    margin-top: 50px;
+    flex-direction: column;
+
+    .header {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+
+      .category {
+        font-size: 18px;
+        width: 150px;
+      }
+      img {
+        object-fit: cover;
+        width: 300px;
+        height: 300px;
+        border-radius: 15px;
+        margin: 0 auto;
+      }
+    }
+
+    .info {
+      .title {
+        margin-top: 15px;
+        font-size: 20px;
+      }
+
+      .description {
+        text-align: justify;
+        margin: 10px;
+        font-size: 18px;
+        line-height: 26px;
+      }
+
+      .ingredients_container {
+        margin: 10px 0;
+
+        .ingredients {
+          padding: 10px;
+          font-size: 18px;
+          margin: 5px;
+          border-radius: 10px;
+          text-transform: capitalize;
+        }
       }
     }
   }

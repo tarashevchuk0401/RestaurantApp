@@ -16,6 +16,7 @@ $color_red: #c33333;
     color: $color_light_blue;
     transition: all ease .2s;
     cursor: pointer;
+    white-space: nowrap;
 
     &:hover{
         color: $color_blue;
