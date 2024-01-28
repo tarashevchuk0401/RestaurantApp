@@ -14,6 +14,8 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {SearchBarService} from './shared/services/search-bar.service';
 import {CoreModule} from './core/core.module';
 import {SharedModule} from './shared/shared.module';
+import {AngularFireModule} from '@angular/fire/compat';
+import { firebaseConfig } from 'src/environment/entironment';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent, SidenavComponent],
@@ -27,6 +29,8 @@ import {SharedModule} from './shared/shared.module';
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot({}, {}),
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: true}),
+    AngularFireModule.initializeApp(firebaseConfig)
+
   ],
   bootstrap: [AppComponent],
   providers: [SearchBarService],

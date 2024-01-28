@@ -7,7 +7,7 @@ import {menuActions} from '../../store/actions';
 import {selectCategories, selectMenu} from '../../store/reducers';
 import {Dish} from 'src/app/shared/types/dish.interface';
 import {SearchBarService} from 'src/app/shared/services/search-bar.service';
-import {DishDetailsComponent} from '../dish-details/dish-details.component';
+import {DishDetailsComponent} from '../../dialogs/dish-details/dish-details.component';
 import {Subject, takeUntil} from 'rxjs';
 
 @Component({

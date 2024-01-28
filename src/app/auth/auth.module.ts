@@ -11,6 +11,7 @@ import { EffectsModule } from '@ngrx/effects';
 import * as authEffects from './store/effects'
 import * as authReducer from './store/reducers'
 import { SharedModule } from '../shared/shared.module';
+import {AngularFireModule} from '@angular/fire/compat';
 
 
 
@@ -27,6 +28,7 @@ import { SharedModule } from '../shared/shared.module';
     MaterialsModule,
     StoreModule.forFeature('auth', authReducer.authReducer),
     EffectsModule.forFeature([authEffects]),
+    
   ],
   providers :[
     AuthService

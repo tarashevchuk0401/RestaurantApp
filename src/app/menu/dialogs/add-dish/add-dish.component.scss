@@ -1,22 +1,30 @@
 @import '/src/assets/styling/variables.scss';
 
-
-h1{
-    text-align: center;
+h1 {
+  text-align: center;
 }
 
-.actions{
-    display: flex;
-    justify-content: center;
+.actions {
+  display: flex;
+  justify-content: center;
 }
 
-form{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
+  .input_file {
+    display: none;
+  }
 }
 
-.mat-dialog-content{
-    overflow: hidden;
+.photo_name_container {
+  height: 30px;
+}
+
+.photo_name {
+  color: $color_dark_blue;
+  text-align: center;
+  margin-top: 5px;
 }

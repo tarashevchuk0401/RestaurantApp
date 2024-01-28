@@ -6,6 +6,8 @@ import {menuActions} from '../../store/actions';
 import {selectCategories} from '../../store/reducers';
 import {Dish} from 'src/app/shared/types/dish.interface';
 import {nanoid} from 'nanoid';
+import { AngularFireStorage } from '@angular/fire/compat/storage'
+
 
 @Component({
   selector: 'app-add-dish',
@@ -15,11 +17,14 @@ import {nanoid} from 'nanoid';
 export class AddDishComponent implements OnInit {
   formDish!: FormGroup;
   allCategories: any = this.store.select(selectCategories);
+  imageFile: any;
 
   constructor(
     public dialogRef: MatDialogRef<AddDishComponent>,
     private fb: FormBuilder,
-    private store: Store
+    private store: Store,
+    private fireStorage: AngularFireStorage,
+
   ) {}
 
   ngOnInit(): void {
@@ -37,10 +42,9 @@ export class AddDishComponent implements OnInit {
     });
   }
 
-  addNewDish(): void {
-    if (!this.formDish) {
-      return;
-    }
+  async addNewDish(): Promise<void>  {
+  
+    
 
     const newDish: Dish = {
       title: this.formDish.value.title,
@@ -60,6 +64,21 @@ export class AddDishComponent implements OnInit {
       id: nanoid(),
     };
 
-    this.store.dispatch(menuActions.addDish({dish: newDish}));
+    if (this.imageFile) {
+      let path = `${this.imageFile.name}`;
+      const uploadTask = await this.fireStorage.upload(path, this.imageFile)
+      const url = await uploadTask.ref.getDownloadURL();
+      newDish.imageUrl = url;
+    }
+
+    if(this.formDish.valid){
+      console.log('added')
+      this.store.dispatch(menuActions.addDish({dish: newDish}));
+    }
+  }
+
+  uploadImage(event: any): void {
+    this.imageFile = event.target.files[0];
+    console.log(this.imageFile)
   }
 }

@@ -14,7 +14,7 @@ import {EffectsModule} from '@ngrx/effects';
 import {AddDishComponent} from './dialogs/add-dish/add-dish.component';
 import {TruncatePipe} from '../shared/pipes/truncate.pipe';
 import { SharedModule } from '../shared/shared.module';
-import { DishDetailsComponent } from './components/dish-details/dish-details.component';
+import { DishDetailsComponent } from './dialogs/dish-details/dish-details.component';
 
 @NgModule({
   declarations: [MainMenuComponent, AddCategoryComponent, AddDishComponent, DishDetailsComponent, DishDetailsComponent],

@@ -21,7 +21,7 @@
                         <div class="title">{{dish.title}}</div>
                         <div class="price">{{dish.price | currency}}</div>
                     </div>
-                    <div class="card_details_description" >
+                    <div class="card_details_description" *ngIf="dish.description" >
                     <p>{{dish.description[0]| truncate}}</p>
                     </div>
                     <div class="card_details_ingredients">
