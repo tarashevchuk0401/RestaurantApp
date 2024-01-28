@@ -15,7 +15,7 @@ form {
   padding: 30px;
   background-color: $color_light_blue;
   border-radius: 15px;
-  outline-offset: 15px; 
+  outline-offset: 15px;
 
   mat-form-field {
     margin-top: 15px;
@@ -23,32 +23,38 @@ form {
     }
   }
 
-  .redirect{
+  .redirect {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
-    .redirect_text{
-        margin: 5px;
-        font-size: 18px;
+    .redirect_text {
+      margin: 5px;
+      font-size: 18px;
 
-        .redirect_text_link{
-            color: $color_dark_blue;
-        }
-
+      .redirect_text_link {
+        color: $color_dark_blue;
       }
     }
-    
-    button{
-      margin-top: 20px;
-    };
+  }
+
+  button {
+    margin-top: 20px;
+  }
 }
 
-.error{
+.error {
   color: $color_red;
   text-align: center;
   text-decoration: underline;
   height: 60px;
   overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  form {
+    width: 290px;
+    padding: 10px;
+  }
 }

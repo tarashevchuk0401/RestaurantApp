@@ -22,7 +22,7 @@ export class SignUpComponent implements OnDestroy, OnInit {
   ngOnInit(): void {
     this.signUpForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(1) ]],
+      password: ['', [Validators.required, Validators.minLength(6) ]],
     })
   }
 

@@ -45,3 +45,28 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .wrapper {
+    .container {
+      flex-direction: column;
+
+      .left {
+        margin-top: 15px;
+
+        img {
+          width: 80px;
+        }
+        .main_logo_text {
+          font-size: 30px;
+          letter-spacing: 2px;
+          margin-left: 5px;
+        }
+      }
+
+      .right {
+        margin-top: 10px;
+      }
+    }
+  }
+}

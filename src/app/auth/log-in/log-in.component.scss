@@ -52,3 +52,10 @@ form {
   height: 60px;
   overflow: hidden;
 }
+
+@media (max-width:768px) {
+ form{
+  width: 290px;
+  padding: 10px;
+ } 
+}

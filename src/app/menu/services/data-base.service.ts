@@ -31,4 +31,8 @@ export class DataBaseService {
       map(result => Object.values(result))
     )
   }
+
+  getDishById(id: string):Observable<Dish>{
+    return this.http.get<Dish>(firebaseConfig.endpoints.menu + `/${id}.json`)
+  }
 }

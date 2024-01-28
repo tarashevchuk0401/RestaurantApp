@@ -1,0 +1,22 @@
+<div class="wrapper" *ngIf="dish">
+    <div class="header">
+        <div class="category">
+            {{dish.category}}
+        </div>
+        <img src="{{dish.imageUrl}}" alt="dish">
+    </div>
+    <div class="info"  >
+        <div class="title">{{dish.title}}</div>
+        <div class="description" *ngFor="let paragraph of dish.description">
+            <p >{{paragraph}}</p>
+        </div>
+        <div class="ingredients_container" >
+            <div *ngFor="let ingredients of dish.ingredients">
+                <div class="ingredients">{{ingredients}}</div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+
