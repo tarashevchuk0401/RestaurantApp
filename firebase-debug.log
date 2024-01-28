@@ -1,0 +1,25 @@
+[debug] [2024-01-28T17:30:33.623Z] ----------------------------------------------------------------------
+[debug] [2024-01-28T17:30:33.625Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\user\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2024-01-28T17:30:33.625Z] CLI Version:   13.0.2
+[debug] [2024-01-28T17:30:33.626Z] Platform:      win32
+[debug] [2024-01-28T17:30:33.626Z] Node Version:  v18.18.2
+[debug] [2024-01-28T17:30:33.627Z] Time:          Sun Jan 28 2024 18:30:33 GMT+0100 (за центральноєвропейським стандартним часом)
+[debug] [2024-01-28T17:30:33.627Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-01-28T17:30:33.721Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-01-28T17:30:33.722Z] > authorizing via signed-in user (tarashevchuk0401@gmail.com)
+[debug] [2024-01-28T17:30:33.722Z] [iam] checking project restaurant-app-af60c for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2024-01-28T17:30:33.725Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/restaurant-app-af60c:testIamPermissions [none]
+[debug] [2024-01-28T17:30:33.725Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/restaurant-app-af60c:testIamPermissions x-goog-quota-user=projects/restaurant-app-af60c
+[debug] [2024-01-28T17:30:33.725Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/restaurant-app-af60c:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-01-28T17:30:34.576Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/restaurant-app-af60c:testIamPermissions 200
+[debug] [2024-01-28T17:30:34.577Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/restaurant-app-af60c:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-01-28T17:30:34.578Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/restaurant-app-af60c [none]
+[debug] [2024-01-28T17:30:34.853Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/restaurant-app-af60c 200
+[debug] [2024-01-28T17:30:34.853Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/restaurant-app-af60c {"projectId":"restaurant-app-af60c","projectNumber":"248625552131","displayName":"restaurant-app","name":"projects/restaurant-app-af60c","resources":{"hostingSite":"restaurant-app-af60c","realtimeDatabaseInstance":"restaurant-app-af60c-default-rtdb","storageBucket":"restaurant-app-af60c.appspot.com","locationId":"europe-west"},"state":"ACTIVE","etag":"1_de53d2fb-740c-4785-930c-327c39d4e386"}
+[info] 
+[info] === Deploying to 'restaurant-app-af60c'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2024-01-28T17:30:34.862Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/restaurant-app-af60c/versions [none]
+[debug] [2024-01-28T17:30:34.862Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/restaurant-app-af60c/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}
